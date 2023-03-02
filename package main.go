@@ -21,7 +21,7 @@ func get_time() func() string {
 	welkom_message := ""
 	daytime := time.Now()
 
-	return func() string {     // ik grebuik een switch case om de verschillende tijden te definiteren(ochtend, middag en avond)
+	return func() string {     // ik gebruik een switch case om de verschillende tijden te definiteren(ochtend, middag en avond)
 		switch {
 		case daytime.Hour() >= 7 && daytime.Hour() < 12:
 			welkom_message = "goeie morgen"
