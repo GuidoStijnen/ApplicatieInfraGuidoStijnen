@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func contains(licence_plates [5]string, plates string) bool {
+func contains(licence_plates [5]string, plates string) bool {     //forloop voor het checken van de kentekenplaten in de licence_plates list
 	for v := 0; v < len(licence_plates); v++ {
 		if licence_plates[v] == plates {
 			return true
@@ -17,11 +17,11 @@ func contains(licence_plates [5]string, plates string) bool {
 
 }
 
-func get_time() func() string {
+func get_time() func() string {     
 	welkom_message := ""
 	daytime := time.Now()
 
-	return func() string {
+	return func() string {     // ik grebuik een switch case om de verschillende tijden te definiteren(ochtend, middag en avond)
 		switch {
 		case daytime.Hour() >= 7 && daytime.Hour() < 12:
 			welkom_message = "goeie morgen"
@@ -37,14 +37,14 @@ func get_time() func() string {
 }
 func main() {
 	daytime := time.Now()
-	reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(os.Stdin)     
 	fmt.Print("Please enter the licenseplate: ")
-	input, _ := reader.ReadString('\n')
+	input, _ := reader.ReadString('\n')  / leest de input van het terminal 
 	licence_plates := [5]string{"65GPFK\r\n", "DSR17\r\n", "6969\r\n", "DSK815\r\n", "8888\r\n"} //\r\n gay shit
 	result := contains(licence_plates, input)
 	time := get_time()
 	switch {
-	case daytime.Hour() >= 23 && daytime.Hour() < 7:
+	case daytime.Hour() >= 23 && daytime.Hour() < 7:    
 		fmt.Println("Sorry, de parkeerplaats is 's nachts gesloten")
 	default:
 		if !result {
